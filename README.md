@@ -16,7 +16,7 @@ Progress charts using chart.js and React:
 ![image](https://github.com/user-attachments/assets/b6ccc056-1a9a-40fb-b753-f8aa4943bf5c)
 ![image](https://github.com/user-attachments/assets/c41576da-d792-4967-af65-8950807472af)
 
-Maaping system to customise running sessions, using Leaflet.js and Google Maps APIs:
+Mapping system to customise running sessions, using Leaflet.js and Google Maps APIs:
 ![image](https://github.com/user-attachments/assets/cabb8fdc-9bf9-4bd4-acf8-74f81ae8bc48)
 
 
