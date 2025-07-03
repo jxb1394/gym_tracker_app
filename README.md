@@ -2,7 +2,7 @@
 
 A simple Flask application which lets you choose between different activities, and tracks your performance using interactive charts using React and Chart.js.
 
-This app uses a very simple structure where all the forms, models, configurations and initialisations are in 'app.py' and a templates folder for the HTML pages, and a stattic file where the CSS and Javascript is present. Some of the Javascript functions are embedded directly in the HTML code for efficiency reasons.
+This app uses a very simple structure where all the forms, models, configurations and initialisations are in 'app.py' and a templates folder for the HTML pages, and a static file where the CSS and Javascript is present. Some of the Javascript functions are embedded directly in the HTML code for efficiency reasons.
 
 Features are included such as a dark mode toggle, an option to track calories, and different charting options to monitor progress. There's also a built in mapping system in ehere users can customise their own run session and record the amount of calories and distanve ran.
 
