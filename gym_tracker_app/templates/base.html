@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fitness Tracker</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<nav>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('activities') }}">Activities</a>
+    <a href="{{ url_for('log') }}">Log</a>
+    <a href="{{ url_for('progress') }}">Progress</a>
+    <a href="{{ url_for('preferences') }}">Preferences</a>
+    <a href="{{ url_for('export') }}">Export PDF</a>
+    <a href="{{ url_for('add') }}">Add</a>
+    <div class="dark-toggle">
+  <label class="switch">
+    <input type="checkbox" id="darkModeToggle">
+    <span class="slider"></span>
+  </label>
+</div>
+</nav>
+
+{% block content %}{% endblock %}
+
+<script>
+  // Smooth scroll placeholder (anchors can be added later)
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', e => {
+      if(link.hash) {
+        e.preventDefault();
+        document.querySelector(link.hash).scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+<script>
+  const toggle = document.getElementById('darkModeToggle');
+  const darkMode = localStorage.getItem('darkMode');
+
+  if (darkMode === 'enabled') {
+    document.body.classList.add('dark');
+    toggle.checked = true;
+  }
+
+  toggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark');
+    if (document.body.classList.contains('dark')) {
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      localStorage.setItem('darkMode', 'disabled');
+    }
+  });
+</script>
+
+
+</body>
+</html>

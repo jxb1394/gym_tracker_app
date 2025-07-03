@@ -1,0 +1,240 @@
+/* === BASE THEME VARIABLES === */
+:root {
+  --bg: #f8fafc;
+  --text: #2d3748;
+  --primary: #2c5282;
+  --primary-hover: #2b6cb0;
+  --accent: #bee3f8;
+  --white: #ffffff;
+  --danger: #e53e3e;
+}
+
+/* === DARK THEME VARIABLES === */
+body.dark {
+  --bg: #1a202c;
+  --text: #e2e8f0;
+  --primary: #63b3ed;
+  --primary-hover: #4299e1;
+  --accent: #90cdf4;
+  --white: #2d3748;
+  --danger: #fc8181;
+}
+
+/* === RESETS === */
+* {
+  box-sizing: border-box;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* === NAVIGATION === */
+nav {
+  background-color: var(--primary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav a {
+  color: #edf2f7;
+  transition: color 0.2s ease;
+}
+nav a:hover {
+  color: var(--accent);
+}
+
+/* === DARK MODE TOGGLE === */
+.dark-toggle {
+  margin-left: auto;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+input:checked + .slider {
+  background-color: var(--primary-hover);
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* === CONTAINER === */
+.container {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* === GRID CARDS === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 1.2rem 0.8rem;
+  text-align: center;
+  color: var(--primary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card i {
+  font-size: 5rem;
+  margin-bottom: 0.5rem;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* === FORMS === */
+form {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  max-width: 480px;
+}
+form label {
+  font-weight: 600;
+  margin-top: 1rem;
+  display: block;
+}
+form input[type="text"],
+form input[type="number"],
+form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e0;
+  background: #f7fafc;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+form input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+form input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  transition: background-color 0.3s ease;
+}
+form input[type="submit"]:hover {
+  background-color: var(--primary-hover);
+}
+
+/* === LISTS === */
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  background: var(--white);
+  padding: 12px 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* === DELETE BUTTON === */
+.delete-btn {
+  background-color: var(--danger);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+.delete-btn:hover {
+  background-color: #c53030;
+}
+
+/* === PROGRESS CHARTS === */
+canvas {
+  border-radius: 12px;
+  background: var(--white);
+  padding: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* === CHARACTER COUNTER === */
+.char-count {
+  text-align: right;
+  font-size: 0.8rem;
+  color: gray;
+  margin-top: -0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+/* === MEDIA QUERIES === */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+}

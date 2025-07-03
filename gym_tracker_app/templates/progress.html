@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2>Progress Overview</h2>
+
+  {% if dates|length > 0 %}
+  <canvas id="durationChart" width="800" height="300"></canvas>
+  <canvas id="calorieChart" width="800" height="300" style="margin-top:30px;"></canvas>
+  {% else %}
+  <p>No workout data to display.</p>
+  {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const dates = {{ dates|tojson }};
+  const durations = {{ durations|tojson }};
+  const calories = {{ calories|tojson }};
+
+  if(dates.length > 0){
+    const ctx1 = document.getElementById('durationChart').getContext('2d');
+    const durationChart = new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: dates,
+        datasets: [{
+          label: 'Duration (minutes)',
+          data: durations,
+          borderColor: '#3182ce',
+          backgroundColor: 'rgba(49, 130, 206, 0.3)',
+          fill: true,
+          tension: 0.2,
+          pointRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: { display: true },
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    const ctx2 = document.getElementById('calorieChart').getContext('2d');
+    const calorieChart = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: dates,
+        datasets: [{
+          label: 'Calories Burned',
+          data: calories,
+          backgroundColor: '#2b6cb0'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: { display: true },
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  }
+</script>
+{% endblock %}

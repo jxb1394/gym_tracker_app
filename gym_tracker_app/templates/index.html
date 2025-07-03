@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Your Activity Log</h2>
+  {% if activities %}
+    <ul>
+      {% for activity in activities %}
+        <li>
+          <div>
+            <strong>{{ activity.type }}</strong> – {{ activity.duration }} mins on {{ activity.date }}
+          </div>
+          <a href="{{ url_for('delete_activity', index=loop.index0) }}">
+            <button class="delete-btn">Delete</button>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No activities logged yet.</p>
+  {% endif %}
+{% endblock %}

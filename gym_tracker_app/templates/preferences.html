@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2>Set Activity Goals</h2>
+  <form method="post" id="goal-form">
+    <label>Activity:</label>
+    <input type="text" name="activity" id="activity-input" maxlength="30" required />
+    <div class="char-count" id="char-count">0 / 30</div>
+
+    <label>Target Duration (min):</label>
+    <input type="number" name="target_duration" min="1" required />
+
+    <input type="submit" value="Set Goal" />
+  </form>
+
+  <h3>Current Goals</h3>
+  <ul>
+    {% for goal in goals %}
+      <li>{{ goal.activity }} – {{ goal.target_duration }} min/week</li>
+    {% endfor %}
+  </ul>
+</div>
+
+<script>
+  const input = document.getElementById('activity-input');
+  const count = document.getElementById('char-count');
+  input.addEventListener('input', () => {
+    count.textContent = `${input.value.length} / 30`;
+  });
+</script>
+{% endblock %}

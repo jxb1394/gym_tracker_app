@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h2>Choose an Activity</h2>
+  <div class="grid">
+    {% for activity in activities %}
+      <a class="card" href="{{ url_for('add') }}?activity={{ activity.name }}">
+        <i class="fa-solid {{ activity.icon }}"></i>
+        <div>{{ activity.name }}</div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
